@@ -21,7 +21,7 @@ public class Account {
     public static Account createAccount(double initialBalance, String pin) {
         Account newAccount = null;
         try (Connection connection = DatabaseUtil.getConnection()) {
-            String query = "INSERT INTO accounts (balance, pin) VALUES (?, ?)";
+            String query = "INSERT INTO accounts (balance, pin) VALUES (?, ?)";//prepared statement
             PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             statement.setDouble(1, initialBalance);
             statement.setString(2, pin);
